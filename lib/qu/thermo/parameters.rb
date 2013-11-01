@@ -36,7 +36,7 @@ Copyright @ 2010, All Rights Reserved.
 =end
 
 module Qu
-  class Thermo
+  module Thermo
     DH = {
       'AATT' => -7.9, 'TTAA' => -7.9,
       'ATTA' => -7.2, 'TAAT' => -7.2,
