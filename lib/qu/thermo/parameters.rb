@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby 
-# -*- coding=> utf-8 -*- #
+# -*- coding: utf-8 -*- #
 =begin
 Thermodynamics Parameters for calculating Tm and Gibbs free energy
 
@@ -37,7 +37,7 @@ Copyright @ 2010, All Rights Reserved.
 
 module Qu
   module Thermo
-    DH = {
+      DH = {
       'AATT' => -7.9, 'TTAA' => -7.9,
       'ATTA' => -7.2, 'TAAT' => -7.2,
       'CAGT' => -8.5, 'TGAC' => -8.5,
@@ -103,13 +103,50 @@ module Qu
       'GACC' => 5.2, 'CCAG'=>5.2, 
       'GCCA' => -0.7, 'ACCG'=>-0.7, 
       'TAAC' => 3.4, 'CAAT'=>3.4, 
-      'TCAA' => 7.6, 'AACT'=>7.6
-    }
+      'TCAA' => 7.6, 'AACT'=>7.6,
 
-    #--------------------#
-    # deltaS (cal/K.mol) #
-    #--------------------#
-    DS = {
+      #tandem mismatch
+      'GGTT' => 5.8,  'TTGG' => 5.8,   
+      'GTTG' => 4.1,  'TGGT' => -1.4, 
+      'GTTT' => 5.8,  'TTTG' => 5.8,
+      'GTAT' => -0.1, 'TATG' => -0.1,
+      #single bulge loop 
+      'AAAT-T' => -4.0,  'AATT-A' => -13.5, 'AACT-G' => 10.2,  'AAGT-C' => -0.2,
+      'ATAT-T' => 9.8,   'ATTT-A' => -19.5, 'ATCT-G' => -4.8,  'ATGT-C' => 5.6,
+      'ACAT-T' => 6.1,   'ACTT-A' => -3.4,  'ACCT-G' => -29.1, 'ACGT-C' => -1.2,
+      'AGAT-T' => 15.5,  'AGTT-A' => 5.3,   'AGCT-G' => -7.2,  'AGGT-C' => 5.7,
+      'TAAA-T' => 15.3,  'TATA-A' => 19.8,  'TACA-G' => -2.3,  'TAGA-C' => 15,
+      'TTAA-T' => -2.7,  'TTTA-A' => -8.2,  'TTCA-G' => 8.8,   'TTGA-C' => 7.0,
+      'TCAA-T' => 1.6,   'TCTA-A' => 9.9,   'TCCA-G' => -15.2, 'TCGA-C' => -0.7,
+      'TGAA-T' => -12.3, 'TGTA-A' => 20.9,  'TGCA-G' => 2.6,   'TGGA-C' => -9.2,
+      'CAAG-T' => -14.4, 'CATG-A' => -7.0,  'CACG-G' => 4.3,   'CAGG-C' => -2.9,
+      'CTAG-T' => -18.7, 'CTTG-A' => -4.6,  'CTCG-G' => -14.5, 'CTGG-C' => -4.7,
+      'CCAG-T' => 5.8,   'CCTG-A' => -5.3,  'CCCG-G' => -2.6,  'CCGG-C' => 9.1,
+      'CGAG-T' => -14.7, 'CGTG-A' => 2.1,   'CGCG-G' => -4.4,  'CGGG-C' => -16.4,
+      'GAAC-T' => -6.8,  'GATC-A' => -9.8,  'GACC-G' => -4.8,  'GAGC-C' => -6.5,
+      'GTAC-T' => -7.4,  'GTTC-A' => 1.8,   'GTCC-G' => -12.3, 'GTGC-C' => -2.3,
+      'GCAC-T' => -2.1,  'GCTC-A' => -3.5,  'GCCC-G' => 0.4,   'GCGC-C' => 13.8,
+      'GGAC-T' => 2.7,   'GGTC-A' => -1.2,  'GGCC-G' => -1.7,  'GGGC-C' => 3.5,
+      # single dangling_end
+      'AA-T' => 0.2,  'TA-T' => -6.9,  'GA-T' => -1.1, 'CA-T' => 0.6,
+      'AC-G' => -6.3, 'TC-G' => -4.0,  'GC-G' => -5.1, 'CC-G' => -4.4,
+      'AG-C' => -3.7, 'TG-C' => -4.9,  'GG-C' => -3.9, 'CG-C' => -4.0,
+      'AT-A' => -2.9, 'TT-A' => -0.2,  'GT-A' => -4.2, 'CT-A' => -4.1,
+      'AAT-' => -0.5, 'ACT-' => 4.7,   'AGT-' => -4.1, 'ATT-' => -3.8,
+      'TAA-' => -0.7, 'TCA-' => 4.4,   'TGA-' => -1.6, 'TTA-' => 2.9,
+      'GAC-' => -2.1,  'GCC-' => -0.2,  'GGC-' => -3.9, 'GTC-' => -4.4,
+      'CAG-' => -5.9, 'CCG-' => -2.6,  'CGG-' => -3.2, 'CTG-' => -5.2,  
+      # long dangling_end
+      'CAAG--' => -2.15, 'CAAAG---' => -3.3,  'CAAAAG----' => -4.85,
+      'TAAA--' => -1.0,  'TAAAA---' => -1.95, 'TAAAAA----' => -2.35,
+      'AAA--T' => -1.5,  'AAAA---T' => -1.75, 'AAAAA----T' => -3.95,
+      'AAG--C' => -0.25, 'AAAG---C' => -0.15, 'AAAAG----C' => -0.75,    
+      }
+
+      #--------------------#
+      # deltaS (cal/K.mol) #
+      #--------------------#
+      DS = {
       'AATT' => -22.2, 'TTAA'=>-22.2, 
       'ATTA' => -20.4, 'TAAT'=>-21.3, 
       'CAGT' => -22.7, 'TGAC'=>-22.7, 
@@ -176,10 +213,83 @@ module Qu
       'GACC' => 14.2, 'CCAG' => 14.2, 
       'GCCA' => -3.8, 'ACCG' => -3.8, 
       'TAAC' => 8.0, 'CAAT' => 8.0, 
-      'TCAA' => 20.2, 'AACT' => 20.2
-    }
+      'TCAA' => 20.2, 'AACT' => 20.2,
+      # tandem mismatch
+      'GGTT' => 16.3, 'TTGG' => 16.3,   
+      'GTTG' => 9.5,  'TGGT' => -6.2, 
+      'GTTT' => 16.3, 'TTTG' => 16.3,
+      'GTAT' => -1.7, 'TATG' => -1.7, 
+      # single bulge loop
+      'AAAT-T' => -17.5, 'AATT-A' => -44.6, 'AACT-G' => 25.8,  'AAGT-C' => -4.6,
+      'ATAT-T' => 24.7,  'ATTT-A' => -61.8, 'ATCT-G' => -20.0, 'ATGT-C' => 12.9,
+      'ACAT-T' => 14.0,  'ACTT-A' => -15.3, 'ACCT-G' => -91.3, 'ACGT-C' => -7.4,
+      'AGAT-T' => 43.1,  'AGTT-A' => 10.6,  'AGCT-G' => -28.4, 'AGGT-C' => 14.4,
+      'TAAA-T' => 38.5,  'TATA-A' => 56.7,  'TACA-G' => -12.7, 'TAGA-C' => 40.4,
+      'TTAA-T' => -16.0, 'TTTA-A' => -30.1, 'TTCA-G' => 23.2,  'TTGA-C' => 17.5,
+      'TCAA-T' => -3.9,  'TCTA-A' => 30.5,  'TCCA-G' => -48.7, 'TCGA-C' => -7.0,
+      'TGAA-T' => -47.0, 'TGTA-A' => 59.8,  'TGCA-G' => 1.6,   'TGGA-C' => -31.4,
+      'CAAG-T' => -46.6, 'CATG-A' => -25.8, 'CACG-G' => 8.8,   'CAGG-C' => -13.0,
+      'CTAG-T' => -61.7, 'CTTG-A' => -17.0, 'CTCG-G' => -48.1, 'CTGG-C' => -18.8,
+      'CCAG-T' => 13.4,  'CCTG-A' => -24.8, 'CCCG-G' => -9.4,  'CCGG-C' => 24.4,
+      'CGAG-T' => -49.6, 'CGTG-A' => 6.5,   'CGCG-G' => -17.8, 'CGGG-C' => -51.6,
+      'GAAC-T' => -25.2, 'GATC-A' => -35.6, 'GACC-G' => -18.3, 'GAGC-C' => -21.0,
+      'GTAC-T' => -27.0, 'GTTC-A' => -0.6,  'GTCC-G' => -40.0, 'GTGC-C' => -10.0,
+      'GCAC-T' => -12.5, 'GCTC-A' => -16.1, 'GCCC-G' => -1.0,  'GCGC-C' => 42.9,
+      'GGAC-T' => 3.6,   'GGTC-A' => -9.3,  'GGCC-G' => -7.2,  'GGGC-C' => 8.5,
+      # single dangling_end
+      'AA-T' => 2.3,   'TA-T' => -20.0, 'GA-T' => -1.6,  'CA-T' => 3.3,
+      'AC-G' => -17.1, 'TC-G' => -10.9, 'GC-G' => -14.0, 'CC-G' => -12.6,
+      'AG-C' => -10,   'TG-C' => -13.8, 'GG-C' => -10.9, 'CG-C' => -11.9,
+      'AT-A' => -7.6,  'TT-A' => -0.5,  'GT-A' => -15.0, 'CT-A' => -13.0,
+      'AAT-' => -1.1,  'ACT-' => 14.2,  'AGT-' => -13.1, 'ATT-' => -12.6,
+      'TAA-' => -0.8,  'TCA-' => 14.9,  'TGA-' => -3.6,  'TTA-' => 10.4,
+      'GAC-' => -3.9,  'GCC-' => -0.1,  'GGC-' => -11.2, 'GTC-' => -13.1,
+      'CAG-' => -16.5, 'CCG-' => -7.4,  'CGG-' => -10.4, 'CTG-' => -15.0, 
+      # long dangling_end
+      'CAAG--' => -5.5, 'CAAAG---' => -8.5, 'CAAAAG----' => -13.5,
+      'TAAA--' => -1.0, 'TAAAA---' => -4.5, 'TAAAAA----' => -6.0,
+      'AAA--T' => -2.5, 'AAAA---T' => -3.5, 'AAAAA----T' => -10.5,
+      'AAG--C' => 0.5,  'AAAG---C' => 1.5,  'AAAAG----C' => -0.5, 
+      }
+
+      LONG_BULGE_LOOP_DS = {
+         '2' => -9.35,    '3' => -10.0,   '4' => -10.32,   '5' => -10.64,  '6' => -11.28,
+         '7' => -11.93,   '8' => -12.57,  '9' => -13.22,  '10' => -13.86, '11' => -14.15,
+         '12' => -14.51,  '13' => -15.00, '14' => -15.48,  '15' => -15.65,  '16' => -16.12,
+         '17' => -16.26,  '18' => -16.77, '19' => -16.80,  '20' => -17.09,
+      }
+
+      TANDEM_MISMATCH = {
+        'GT' => ['TT', 'AT', 'TG'],
+        'TT' => ['TG', 'GG'],
+        'TG' => ['GT'],
+        'GG' => ['TT'],
+        'TA' => ['TG'],
+      }
+
+      PERFECT_MATCH = {
+          'A' => 'T',
+          'T' => 'A',
+          'C' => 'G',
+          'G' => 'C',
+      }
+
+      D2I = {
+          'A' => 0, 
+          'T' => 3, 
+          'C' => 2, 
+          'G' => 1,
+          '-' => 4,
+          0 => 'A',
+          1 => 'G',
+          2 => 'C',
+          3 => 'T',
+          4 => '-', 
+      }
+
+      ANTISENSE_CHARS = %w{A G C T -}
   end
-end
+# end
 
 if $0 == __FILE__
   qseq = 'GGACTGACG'
