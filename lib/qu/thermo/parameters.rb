@@ -289,10 +289,10 @@ module Qu
 
       ANTISENSE_CHARS = %w{A G C T -}
   end
-# end
+end
 
 if $0 == __FILE__
-  qseq = 'GGACTGACG'
-  sseq = 'CCTGGCTGC'
-  p Qu::Thermo::DH
+   qseq = 'GGACTGACG'
+   sseq = 'CCTGGCTGC'
+   p Qu::Thermo::DH
 end
