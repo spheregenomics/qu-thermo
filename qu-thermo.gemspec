@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["quwubin@gmail.com"]
   spec.description   = %q{A thermodynamics library for calculating DNA/DNA binding energy}
   spec.summary       = %q{Thermodynamics parameters and calculations}
-  spec.homepage      = "http://quwubin.cn"
+  spec.homepage      = "https://github.com/quwubin/qu-thermo"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

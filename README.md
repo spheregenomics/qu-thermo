@@ -1,6 +1,6 @@
 # Qu::Thermo
 
-TODO: Write a gem description
+A thermodynamics library for calculating DNA/DNA binding energy
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`tm = Qu::Thermo::Hybrid.new(seq_1, seq_2).tm`
 
 ## Contributing
 

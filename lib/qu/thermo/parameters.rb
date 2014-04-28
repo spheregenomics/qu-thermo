@@ -274,25 +274,10 @@ module Qu
           'G' => 'C',
       }
 
-      D2I = {
-          'A' => 0, 
-          'T' => 3, 
-          'C' => 2, 
-          'G' => 1,
-          '-' => 4,
-          0 => 'A',
-          1 => 'G',
-          2 => 'C',
-          3 => 'T',
-          4 => '-', 
-      }
-
-      ANTISENSE_CHARS = %w{A G C T -}
+      
   end
 end
 
 if $0 == __FILE__
-   qseq = 'GGACTGACG'
-   sseq = 'CCTGGCTGC'
    p Qu::Thermo::DH
 end
